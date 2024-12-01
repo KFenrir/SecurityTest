@@ -146,3 +146,10 @@ button:hover{
     animation:fadeOut 7s forwards;
 
 }
+
+.g-recaptcha{
+ 
+    margin: 5px;
+    justify-content: center;
+    display: flex;
+}

@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register & Login</title>
+  <title>SecurityTest - Registro & Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script type="module" src="firebaseauth.js"></script>
 </head>
 
 <body>
+  <!--Registro-->
   <div class="container" id="signup" style="display:none;">
-    <h1 class="form-title">Register</h1>
+    <!--titulo-->
+    <h1 class="form-title">Registro</h1>
+    <!--Formulario registro-->
     <form method="post" action="">
       <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
       <div class="input-group">
         <i class="fas fa-user"></i>
         <input type="text" id="fName" placeholder="First Name" required>
-        <label for="fname">First Name</label>
+        <label for="fname">Nombre</label>
       </div>
       <div class="input-group">
         <i class="fas fa-user"></i>
         <input type="text" id="lName" placeholder="Last Name" required>
-        <label for="lName">Last Name</label>
+        <label for="lName">Apellido</label>
       </div>
       <div class="input-group">
         <i class="fas fa-envelope"></i>
@@ -33,25 +36,21 @@
       <div class="input-group">
         <i class="fas fa-lock"></i>
         <input type="password" id="rPassword" placeholder="Password" required>
-        <label for="rPassword">Password</label>
+        <label for="rPassword">Contraseña</label>
       </div>
-      <button class="btn" id="submitSignUp">Sign Up</button>
+      <!--Boton registrarse-->
+      <button class="btn" id="submitSignUp">Registrarse</button>
     </form>
-    <p class="or">
-      ----------or--------
-    </p>
-    <div class="icons">
-      <i class="fab fa-google"></i>
-      <i class="fab fa-facebook"></i>
-    </div>
+    <!--¿Ya tienes cuenta?-->
     <div class="links">
-      <p>Already Have Account ?</p>
-      <button id="signInButton">Sign In</button>
+      <p>Ya tienes cuenta ?</p>
+      <button id="signInButton">Log In</button>
     </div>
   </div>
-
+  <!--Log In-->
   <div class="container" id="signIn">
-    <h1 class="form-title">Sign In</h1>
+    <!--Formulario log in-->
+    <h1 class="form-title">Log in</h1>
     <form method="post" action="">
       <div id="signInMessage" class="messageDiv" style="display:none;"></div>
 
@@ -63,26 +62,29 @@
       <div class="input-group">
         <i class="fas fa-lock"></i>
         <input type="password" id="password" placeholder="Password" required>
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
       </div>
       <p class="recover">
-        <a href="#">Recover Password</a>
+        <a href="#">Recuperar Contraseña</a>
       </p>
-      <button class="btn" id="submitSignIn">Sign In</button>
-    </form>
-    <p class="or">
-      ----------or--------
-    </p>
-    <div class="icons">
-      <i class="fab fa-google"></i>
-      <i class="fab fa-facebook"></i>
+
+    <!--reCaptcha v2-->
+    <div class="g-recaptcha" data-sitekey="6LfN8o4qAAAAAN9Nej6AQFENzGlsw6-pQrNXSHL2">
     </div>
+
+      <!--Boton ingresar-->
+      <button class="btn" id="submitSignIn">Ingresar</button>
+    </form>
+
+    <!--¿No tienes cuenta?-->
     <div class="links">
-      <p>Don't have account yet?</p>
-      <button id="signUpButton">Sign Up</button>
+      <p>Todavia no tienes una cuenta?</p>
+      <button id="signUpButton">Registrate</button>
     </div>
   </div>
+  <!--Script-->
   <script src="script.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
