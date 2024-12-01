@@ -3,8 +3,14 @@ import {getAuth, onAuthStateChanged, signOut} from "https://www.gstatic.com/fire
 import{getFirestore, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
 
 const firebaseConfig = {
-    //YOUR COPIED FIREBASE PART SHOULD BE HERE
- //WATCH THIS VIDEO TO LEARN WHAT TO PUT HERE   https://youtu.be/_Xczf06n6x0
+    apiKey: "AIzaSyCrEDO9tHNXZkZnhCI0uZxVGXez-VMBn0E",
+    authDomain: "securitytrap.firebaseapp.com",
+    databaseURL: "https://securitytrap-default-rtdb.firebaseio.com",
+    projectId: "securitytrap",
+    storageBucket: "securitytrap.firebasestorage.app",
+    messagingSenderId: "1074157431505",
+    appId: "1:1074157431505:web:4cf4c11a3264cc8086b3f0",
+    measurementId: "G-8FGT22S36N"
   };
  
   // Initialize Firebase

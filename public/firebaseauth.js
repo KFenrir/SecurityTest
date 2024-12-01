@@ -34,7 +34,7 @@ function sanitizeInput(input) {
 }
 
 function validateInput(event) {
-  const invalidChars = /[{}+´=?!#$%&/()*'"-,]/g;
+  const invalidChars = /[{}+´'"-,]/g;
   if (invalidChars.test(event.target.value)) {
     event.target.value = event.target.value.replace(invalidChars, '');
     showMessage('Special characters are not allowed', 'signInMessage');
@@ -103,6 +103,8 @@ signIn.addEventListener('click', (event) => {
       showMessage('Login is successful', 'signInMessage');
       const user = userCredential.user;
       localStorage.setItem('loggedInUserId', user.uid);
+      // Set secure cookie attributes
+      document.cookie = `session=${user.stsTokenManager.accessToken}; Secure; HttpOnly; SameSite=Strict; path=/; max-age=300`;
       window.location.href = 'homepage.html';
     })
     .catch((error) => {
