@@ -4,8 +4,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  //YOUR COPIED FIREBASE PART SHOULD BE HERE
-  //WATCH THIS VIDEO TO LEARN WHAT TO PUT HERE   https://youtu.be/_Xczf06n6x0
   apiKey: "AIzaSyCrEDO9tHNXZkZnhCI0uZxVGXez-VMBn0E",
   authDomain: "securitytrap.firebaseapp.com",
   databaseURL: "https://securitytrap-default-rtdb.firebaseio.com",
@@ -29,13 +27,30 @@ function showMessage(message, divId) {
   }, 5000);
 }
 
+function sanitizeInput(input) {
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(input));
+  return div.innerHTML;
+}
+
+function validateInput(event) {
+  const invalidChars = /[{}+´=?!#$%&/()*'"-,]/g;
+  if (invalidChars.test(event.target.value)) {
+    event.target.value = event.target.value.replace(invalidChars, '');
+    showMessage('Special characters are not allowed', 'signInMessage');
+  }
+}
+
+document.getElementById('email').addEventListener('input', validateInput);
+document.getElementById('password').addEventListener('input', validateInput);
+
 const signUp = document.getElementById('submitSignUp');
 signUp.addEventListener('click', (event) => {
   event.preventDefault();
-  const email = document.getElementById('rEmail').value;
-  const password = document.getElementById('rPassword').value;
-  const firstName = document.getElementById('fName').value;
-  const lastName = document.getElementById('lName').value;
+  const email = sanitizeInput(document.getElementById('rEmail').value);
+  const password = sanitizeInput(document.getElementById('rPassword').value);
+  const firstName = sanitizeInput(document.getElementById('fName').value);
+  const lastName = sanitizeInput(document.getElementById('lName').value);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -74,8 +89,8 @@ const maxAttempts = 3;
 const signIn = document.getElementById('submitSignIn');
 signIn.addEventListener('click', (event) => {
   event.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const email = sanitizeInput(document.getElementById('email').value);
+  const password = sanitizeInput(document.getElementById('password').value);
   const auth = getAuth();
 
   if (loginAttempts >= maxAttempts) {
